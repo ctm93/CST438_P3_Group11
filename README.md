@@ -5,7 +5,7 @@ myPlants is a mobile application that helps plant owners better manage their pla
 The myPlants database will be held on [Firebase? Postgres?] with the API (built on Postman) accessed through [Springboot?]. 
 
 # Tech Stack
-Android, Springboot
+Android, Springboot, Firebase
 
 # Contributors
 - Cristina Martinez (ctm93)
