@@ -6,6 +6,7 @@ The myPlants database will be held on Firebase with the API (built on Postman) a
 
 # Mockup
 ![Mockup](https://user-images.githubusercontent.com/59929844/139332235-1d3b54c0-ea60-4e34-83ce-c78aaadefe57.png)
+![Entity Relationship Diagram](https://user-images.githubusercontent.com/51251414/139507953-3f6cacac-2eb4-46bb-b8a1-e6e934b16c4b.png)
 
 # Tech Stack
 Android, Springboot, Firebase
