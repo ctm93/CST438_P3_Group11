@@ -9,7 +9,7 @@ The myPlants database will be held on Firebase with the API (built on Postman) a
 ![Entity Relationship Diagram](https://user-images.githubusercontent.com/51251414/139507953-3f6cacac-2eb4-46bb-b8a1-e6e934b16c4b.png)
 
 # Tech Stack
-Android, Springboot, Firebase
+Android, node.js, Firebase
 
 # Contributors
 - Cristina Martinez (ctm93)
