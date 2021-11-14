@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CST438_P3_Group11">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
