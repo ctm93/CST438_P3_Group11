@@ -24,17 +24,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void onClickMethods() {
         loginButton.setOnClickListener(v -> {
-            //TODO: Change to Login Activity
-            Toast.makeText(getApplicationContext(), "Login Button Clicked", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         });
 
         signUpButton.setOnClickListener(v -> {
-            //TODO: Change to Sign Up Activity
-            Toast.makeText(getApplicationContext(), "Sign Up Button Clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, Home.class);
+            Intent intent = new Intent(this, SignUpActivity.class);
             startActivity(intent);
+        });
+
+        loginButton.setOnLongClickListener(v -> {
+            //TODO: Remove after login activity is completed
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            startActivity(intent);
+            return true;
         });
     }
 
