@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="48dp"
-            android:background="?attr/cardBackgroundColor"
+            android:background="@null"
             android:hint="@string/search"
             android:importantForAutofill="no"
             android:inputType="text" />

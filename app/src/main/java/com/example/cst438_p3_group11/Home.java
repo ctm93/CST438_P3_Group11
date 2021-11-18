@@ -26,10 +26,10 @@ public class Home extends AppCompatActivity {
     private void createBottomNavigationView() {
         mBottomNavigationView = findViewById(R.id.bottom_navigation);
         setNavigationListener();
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.home_fragment, new AllPlants())
-//                .commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.home_fragment, new AllPlants())
+                .commit();
     }
 
     private void setNavigationListener() {

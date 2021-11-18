@@ -35,7 +35,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="?attr/cardBackgroundColor"
+                android:background="@null"
                 android:hint="@string/cabbage"
                 android:importantForAutofill="no"
                 android:inputType="text" />
@@ -73,7 +73,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="?attr/cardBackgroundColor"
+                android:background="@null"
                 android:hint="@string/water_cycle_hint"
                 android:importantForAutofill="no"
                 android:inputType="text" />
@@ -112,7 +112,7 @@
                 android:layout_height="200dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="?attr/cardBackgroundColor"
+                android:background="@null"
                 android:gravity="top"
                 android:hint="@string/plant_description"
                 android:importantForAutofill="no"
