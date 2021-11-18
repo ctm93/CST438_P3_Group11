@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> {
             //TODO: Change to Login Activity
             Toast.makeText(getApplicationContext(), "Login Button Clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, Home.class);
             startActivity(intent);
         });
 
         signUpButton.setOnClickListener(v -> {
             //TODO: Change to Sign Up Activity
             Toast.makeText(getApplicationContext(), "Sign Up Button Clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, SignUpActivity.class);
+            Intent intent = new Intent(this, Home.class);
             startActivity(intent);
         });
     }
