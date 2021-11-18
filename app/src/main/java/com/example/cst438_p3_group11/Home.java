@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.cst438_p3_group11.HomeFragments.AddPlant;
 import com.example.cst438_p3_group11.HomeFragments.AllPlants;
@@ -19,16 +20,16 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-//        createBottomNavigationView();
+        createBottomNavigationView();
     }
 
     private void createBottomNavigationView() {
         mBottomNavigationView = findViewById(R.id.bottom_navigation);
-//        setNavigationListener();
-////        getSupportFragmentManager()
-////                .beginTransaction()
-////                .replace(R.id.home_fragment, new AllPlants())
-////                .commit();
+        setNavigationListener();
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.home_fragment, new AllPlants())
+//                .commit();
     }
 
     private void setNavigationListener() {
@@ -38,9 +39,12 @@ public class Home extends AppCompatActivity {
 
             if (item.getItemId() == R.id.all_plants) {
                 selectedFragment = new AllPlants();
+                Toast.makeText(getApplicationContext(), "All Plants", Toast.LENGTH_SHORT).show();
             } else if (item.getItemId() == R.id.my_plants) {
                 selectedFragment = new MyPlants();
+                Toast.makeText(getApplicationContext(), "My Plants", Toast.LENGTH_SHORT).show();
             } else if (item.getItemId() == R.id.add_plant) {
+                Toast.makeText(getApplicationContext(), "Add Plant", Toast.LENGTH_SHORT).show();
                 selectedFragment = new AddPlant();
             } else {
                 return false;
