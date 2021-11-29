@@ -32,6 +32,8 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    //Commenting this out for now. Connecting Firebase using Node.js
+/*
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     EditText username1, password1;
     Button btnRegister;
@@ -80,4 +82,6 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+
+ */
 }
