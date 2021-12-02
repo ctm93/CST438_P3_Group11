@@ -6,4 +6,19 @@
     <string name="password">Password</string>
     <string name="username_icon">Username Icon</string>
     <string name="password_icon">Password Icon</string>
+    <string name="signup">Sign Up</string>
+    <string name="all_plant">All Plant</string>
+    <string name="my_plants">My Plants</string>
+    <string name="add_plant">Add Plant</string>
+    <string name="search">Search</string>
+    <string name="plant_name">Plant Name</string>
+    <string name="water_cycle">Water Cycle</string>
+    <string name="description">Description</string>
+    <string name="cabbage">Cabbage</string>
+    <string name="water_cycle_hint">Every 2 days</string>
+    <string name="plant_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor tortor non sodales porta. Pellentesque aliquam elit sed ex laoreet pulvinar. Vestibulum condimentum lobortis ullamcorper. Vestibulum odio est, malesuada at lorem vitae, tincidunt faucibus nisl. Mauris eu ligula diam. Aenean facilisis magna magna, eget facilisis est sodales a. Cras venenatis efficitur dolor ac lobortis. Nunc cursus metus lorem, et lobortis augue varius in. Nam eu enim non massa pretium gravida. Proin feugiat fringilla porttitor. Donec risus ligula, tincidunt nec mauris nec, ultricies venenatis nisi.</string>
+    <string name="plant_image">Plant Image</string>
+    <string name="favorite_icon">Favorite Icon</string>
+    <string name="edit_icon">Edit Icon</string>
+    <string name="delete_icon">Delete Icon</string>
 </resources>
