@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.api.Http;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -25,7 +26,9 @@ public class AddPublicPlantActivity extends AppCompatActivity {
     private EditText nameBox;
     private EditText descriptionBox;
 
-    // Firebase
+    private static final String SERVER = "http://10.0.2.2:3000/";
+
+    // Firebase TODO: (Delete if post works)
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -44,10 +47,16 @@ public class AddPublicPlantActivity extends AppCompatActivity {
         addButton.setOnClickListener(v -> {
             String plantName = nameBox.getText().toString();
             String description = descriptionBox.getText().toString();
+
+            String url = SERVER + "public_plants?plantName=" + plantName + "&description=" + description;
+            HttpRequest request = new HttpRequest(url, "POST");
+            request.execute();
+
+            //TODO: Delete comment if post works.
+            /*
             Map<String, Object> plant = new HashMap<>();
             plant.put("plantName", plantName);
             plant.put("description", description);
-
             db.collection("public_plants")
                     .add(plant)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -63,6 +72,7 @@ public class AddPublicPlantActivity extends AppCompatActivity {
 
                 }
             });
+             */
         });
     }
 
