@@ -1,8 +1,6 @@
 package com.example.cst438_p3_group11;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddPlantActivity extends AppCompatActivity {
+public class AddPublicPlantActivity extends AppCompatActivity {
 
     // Layout parts
     private TextView title;
@@ -50,18 +48,18 @@ public class AddPlantActivity extends AppCompatActivity {
             plant.put("plantName", plantName);
             plant.put("description", description);
 
-            db.collection("Plant")
+            db.collection("public_plants")
                     .add(plant)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(AddPlantActivity.this, "Successfully added!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddPublicPlantActivity.this, "Successfully added!", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
 
-                    Toast.makeText(AddPlantActivity.this, "Failed to add plant. Please try again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPublicPlantActivity.this, "Failed to add plant. Please try again.", Toast.LENGTH_SHORT).show();
 
                 }
             });
