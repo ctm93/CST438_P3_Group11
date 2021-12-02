@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Programming/AndroidStudio/CST438_P3_Group11/app/src/main/res/layout/activity_login.xml" value="0.3572916666666667" />
-        <entry key="..\:/Programming/AndroidStudio/CST438_P3_Group11/app/src/main/res/layout/activity_main.xml" value="0.3625" />
-        <entry key="..\:/Users/Cristina Martinez/Documents/GitHub/CST438_P3_Group11/app/src/main/res/layout/activity_signup.xml" value="0.18" />
-        <entry key="..\:/Users/Kat/StudioProjects/CST438_P3_Group11/app/src/main/res/layout/activity_health_check.xml" value="0.1" />
+        <entry key="..\:/Users/Emma/Documents/Code/CST438/Project3/CST438_P3_Group11/app/src/main/res/layout/activity_add_plant.xml" value="0.328125" />
+        <entry key="..\:/Users/Emma/Documents/Code/CST438/Project3/CST438_P3_Group11/app/src/main/res/layout/activity_health_check.xml" value="0.328125" />
+        <entry key="..\:/Users/Emma/Documents/Code/CST438/Project3/CST438_P3_Group11/app/src/main/res/layout/activity_login.xml" value="0.33489583333333334" />
+        <entry key="..\:/Users/Emma/Documents/Code/CST438/Project3/CST438_P3_Group11/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Emma/Documents/Code/CST438/Project3/CST438_P3_Group11/app/src/main/res/layout/activity_signup.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
