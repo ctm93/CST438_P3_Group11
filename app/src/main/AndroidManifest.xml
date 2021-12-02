@@ -12,16 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CST438_P3_Group11"
         android:usesCleartextTraffic="true">
-<!--        <activity-->
-<!--            android:name=".MainActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-        android:theme="@style/Theme.CST438_P3_Group11">
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Home"
             android:exported="false" />
@@ -31,12 +30,7 @@
             android:exported="false"/>
         <activity
             android:name=".HealthCheckActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
     </application>
 

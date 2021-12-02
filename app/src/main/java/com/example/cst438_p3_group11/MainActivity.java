@@ -22,15 +22,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onClickMethods() {
-        loginButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        });
+        loginButton.setOnClickListener(v -> startActivity(IntentFactory.getIntent(this, LoginActivity.class)));
 
-        signUpButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, SignUpActivity.class);
-            startActivity(intent);
-        });
+        signUpButton.setOnClickListener(v -> startActivity(IntentFactory.getIntent(this, SignUpActivity.class)));
     }
 
     private void connectElements() {
