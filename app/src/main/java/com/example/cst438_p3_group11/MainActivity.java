@@ -32,13 +32,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SignUpActivity.class);
             startActivity(intent);
         });
-
-        loginButton.setOnLongClickListener(v -> {
-            //TODO: Remove after login activity is completed
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
-            return true;
-        });
     }
 
     private void connectElements() {

@@ -39,12 +39,9 @@ public class Home extends AppCompatActivity {
 
             if (item.getItemId() == R.id.all_plants) {
                 selectedFragment = new AllPlants();
-                Toast.makeText(getApplicationContext(), "All Plants", Toast.LENGTH_SHORT).show();
             } else if (item.getItemId() == R.id.my_plants) {
                 selectedFragment = new MyPlants();
-                Toast.makeText(getApplicationContext(), "My Plants", Toast.LENGTH_SHORT).show();
             } else if (item.getItemId() == R.id.add_plant) {
-                Toast.makeText(getApplicationContext(), "Add Plant", Toast.LENGTH_SHORT).show();
                 selectedFragment = new AddPlant();
             } else {
                 return false;

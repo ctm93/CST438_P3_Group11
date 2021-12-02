@@ -5,17 +5,12 @@
     android:layout_height="match_parent"
     android:background="?attr/colorOnPrimary">
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/all_plants_view"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_above="@id/search_bar" />-->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/plants_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/search_bar"
-        android:gravity="center"
-        android:text="Plants View" />
+        android:padding="8dp"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_bar"
@@ -35,7 +30,7 @@
             android:src="@drawable/search" />
 
         <EditText
-            android:id="@+id/search_text"
+            android:id="@+id/search_plant"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="48dp"
