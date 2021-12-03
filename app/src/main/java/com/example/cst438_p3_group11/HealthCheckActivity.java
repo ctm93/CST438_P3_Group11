@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -50,7 +51,7 @@ public class HealthCheckActivity extends AppCompatActivity {
 
             try {
                 // connect to the server
-                URL myUrl = new URL(SERVER);
+                URL myUrl = new URL(SERVER.concat("login?username=testuser1"));
                 HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
                 connection.setRequestMethod(REQUEST_METHOD);
                 connection.setReadTimeout(READ_TIMEOUT);
