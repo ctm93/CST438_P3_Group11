@@ -28,8 +28,8 @@ public class AddUserPlantActivity extends AppCompatActivity {
     private EditText descriptionBox;
     private EditText fertilizerBox;
 
-    // Firebase
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static final String SERVER = "http://10.0.2.2:3000/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,26 +49,11 @@ public class AddUserPlantActivity extends AppCompatActivity {
             String plantName = nameBox.getText().toString();
             String waterCycle = cycleBox.getText().toString();
             String description = descriptionBox.getText().toString();
-            Map<String, Object> plant = new HashMap<>();
-            plant.put("plantName", plantName);
-            plant.put("waterCycle", waterCycle);
-            plant.put("description", description);
 
-            db.collection("user_plants")
-                    .add(plant)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(AddUserPlantActivity.this, "Successfully added!", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
+            String url = SERVER + "user_plants?plantName=" + plantName + "&waterCycle=" + waterCycle + "&description=" + description;
+            HttpRequest request = new HttpRequest(url, "POST");
+            request.execute();
 
-                    Toast.makeText(AddUserPlantActivity.this, "Failed to add plant. Please try again.", Toast.LENGTH_SHORT).show();
-
-                }
-            });
         });
     }
 
