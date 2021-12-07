@@ -28,9 +28,6 @@ public class AddPublicPlantActivity extends AppCompatActivity {
 
     private static final String SERVER = "http://10.0.2.2:3000/";
 
-    // Firebase TODO: (Delete if post works)
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,27 +49,6 @@ public class AddPublicPlantActivity extends AppCompatActivity {
             HttpRequest request = new HttpRequest(url, "POST");
             request.execute();
 
-            //TODO: Delete comment if post works.
-            /*
-            Map<String, Object> plant = new HashMap<>();
-            plant.put("plantName", plantName);
-            plant.put("description", description);
-            db.collection("public_plants")
-                    .add(plant)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(AddPublicPlantActivity.this, "Successfully added!", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                    Toast.makeText(AddPublicPlantActivity.this, "Failed to add plant. Please try again.", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-             */
         });
     }
 
