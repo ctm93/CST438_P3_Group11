@@ -34,7 +34,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     EditText username1, password1;
-    Button btnRegister;
+    Button btnRegister, btnBacktoHome;
+
+    IntentFactory factory = new IntentFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         username1 = findViewById(R.id.etUsername);
         password1 = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegister);
+        btnBacktoHome = findViewById(R.id.btnBackToHome);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +79,13 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Please enter all necessary information.", Toast.LENGTH_LONG).show();
                 }
 
+            }
+        });
+
+        btnBacktoHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(factory.getIntent(SignUpActivity.this, MainActivity.class));
             }
         });
 
