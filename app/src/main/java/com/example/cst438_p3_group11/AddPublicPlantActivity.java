@@ -1,8 +1,6 @@
 package com.example.cst438_p3_group11;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.api.Http;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddPlantActivity extends AppCompatActivity {
+public class AddPublicPlantActivity extends AppCompatActivity {
 
     // Layout parts
     private TextView title;
@@ -27,8 +26,7 @@ public class AddPlantActivity extends AppCompatActivity {
     private EditText nameBox;
     private EditText descriptionBox;
 
-    // Firebase
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static final String SERVER = "http://10.0.2.2:3000/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,25 +44,11 @@ public class AddPlantActivity extends AppCompatActivity {
         addButton.setOnClickListener(v -> {
             String plantName = nameBox.getText().toString();
             String description = descriptionBox.getText().toString();
-            Map<String, Object> plant = new HashMap<>();
-            plant.put("plantName", plantName);
-            plant.put("description", description);
 
-            db.collection("Plant")
-                    .add(plant)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(AddPlantActivity.this, "Successfully added!", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
+            String url = SERVER + "public_plants?plantName=" + plantName + "&description=" + description;
+            HttpRequest request = new HttpRequest(url, "POST");
+            request.execute();
 
-                    Toast.makeText(AddPlantActivity.this, "Failed to add plant. Please try again.", Toast.LENGTH_SHORT).show();
-
-                }
-            });
         });
     }
 
