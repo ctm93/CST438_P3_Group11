@@ -24,6 +24,8 @@ import java.util.Map;
 public class SignUpActivity extends AppCompatActivity {
 
     // Function to ensure all information was input.
+
+    //TODO check input was not empty and username doesn't exist
     public Boolean validate(String username, String password) {
         if(username != null && password != null) {
             return true;

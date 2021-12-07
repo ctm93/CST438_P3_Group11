@@ -62,4 +62,9 @@ public class PlantListAdapter extends RecyclerView.Adapter<PlantListAdapter.Plan
     public int getItemCount() {
         return mPlantList.size();
     }
+
+    public void filterList(ArrayList<TempPlantClass> plants) {
+        mPlantList = plants;
+        notifyDataSetChanged();
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.cst438_p3_group11.HomeFragments;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
 public class MyPlants extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private PlantListAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private EditText mSearch;
     ArrayList<TempPlantClass> mPlants; //TODO: Change PLant Class
@@ -33,7 +35,38 @@ public class MyPlants extends Fragment {
         mSearch = v.findViewById(R.id.search_plant);
         mPlants = getPlantList();
         createRecyclerView(v);
+        searchPlant();
         return v;
+    }
+
+    private void searchPlant() {
+        mSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+    }
+
+    private void filter(String text) {
+        ArrayList<TempPlantClass> filteredList = new ArrayList<>();
+        for(TempPlantClass plant: mPlants) {
+            if(plant.getPlantName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(plant);
+            }
+        }
+
+        mAdapter.filterList(filteredList);
     }
 
     private void createRecyclerView(View view) {

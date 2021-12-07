@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //TODO Use api to check username and password
     public Boolean validate(String username, String password) {
         if(username != null && password != null) {
             return true;
