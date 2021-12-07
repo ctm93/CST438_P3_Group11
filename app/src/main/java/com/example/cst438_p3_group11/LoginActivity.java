@@ -14,7 +14,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText mUsername;
     private EditText mPassword;
-    private Button mLogin;
+    private Button mLogin, mBack;
+    IntentFactory factory = new IntentFactory();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         mUsername = findViewById(R.id.username);
         mPassword = findViewById(R.id.password);
         mLogin = findViewById(R.id.login_button);
+        mBack = findViewById(R.id.btnBackToHomeLogin);
 
         mLogin.setOnClickListener(v -> login());
+        mBack.setOnClickListener(v -> back());
     }
 
     private void login() {
@@ -40,8 +43,12 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();
         if(validate(username, password)) {
             Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
+            startActivity(factory.getIntent(this, Home.class));
         }
+    }
+
+    private void back() {
+        startActivity(factory.getIntent(this, MainActivity.class));
     }
 
     public Boolean validate(String username, String password) {
