@@ -34,6 +34,8 @@ public class Utils {
     }
 
     public static ArrayList<PublicPlant> getPublicPlants() {
+        ArrayList<PublicPlant> plants = new ArrayList<>();
+
         String url = SERVER + "/getPlants";
         HttpRequest request = new HttpRequest(url, "GET");
         String result;
@@ -43,7 +45,6 @@ public class Utils {
             return null;
         }
         String[] tokens = result.split("/");
-        ArrayList<PublicPlant> plants = new ArrayList<>();
         for(String t: tokens) {
             String[] plantInfo = t.split(";");
             String name = plantInfo[0];
@@ -55,6 +56,33 @@ public class Utils {
         return plants;
     }
 
+    public static ArrayList<UserPlant> getUserPlants(String username) {
+        ArrayList<UserPlant> plants = new ArrayList<>();
+
+        String url = SERVER + "/getMyPlants";
+        HttpRequest request = new HttpRequest(url, "GET");
+        String result;
+        try {
+            result = request.execute().get();
+        } catch (Exception e) {
+            return null;
+        }
+
+        String[] tokens = result.split("/");
+        for(String t: tokens) {
+            String [] plantInfo = t.split(";");
+            String name = plantInfo[0];
+            if(!username.equals(plantInfo[1])) {
+                continue;
+            }
+            String description = plantInfo[2];
+            String notes = plantInfo[3];
+            String waterCycle = plantInfo[4];
+            String fertilizeCycle = plantInfo[5];
+            plants.add(new UserPlant(name, description, notes, waterCycle, fertilizeCycle));
+        }
+        return plants;
+    }
 
 
 }
