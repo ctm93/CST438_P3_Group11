@@ -22,4 +22,15 @@
     <string name="edit_icon">Edit Icon</string>
     <string name="delete_icon">Delete Icon</string>
     <string name="back">Back</string>
+    <string name="add_public_plant">Add Public Plant</string>
+    <string name="plant_description_text">Plant Description</string>
+    <string name="notes">Notes</string>
+    <string name="watering_start">Watering Start</string>
+    <string name="watering_cycle">Watering Cycle</string>
+    <string name="fertilize_start">Fertilize Start</string>
+    <string name="fertilize_cycle">Fertilize Cycle</string>
+    <string name="add_user_plant">Add User Plant</string>
+    <string name="watering_cycle_view">Watering Cycle: </string>
+    <string name="value">Value</string>
+    <string name="fertilizing_cycle_view">Fertilizing Cycle: </string>
 </resources>

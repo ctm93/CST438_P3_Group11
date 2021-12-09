@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mUsername;
@@ -39,11 +41,16 @@ public class LoginActivity extends AppCompatActivity {
         String username = mUsername.getEditableText().toString();
         String password = mPassword.getEditableText().toString();
 
-        //TODO Remove toast
-        Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();
         if(validate(username, password)) {
             Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(factory.getIntent(this, Home.class));
+            intent.putExtra(Utils.USERNAME_KEY, username);
+            startActivity(intent);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Login Failed",
+                    Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
@@ -52,10 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public Boolean validate(String username, String password) {
-        if(username != null && password != null) {
-            return true;
-        }
-        return false;
+        return Utils.login(username, password);
     }
 
 }

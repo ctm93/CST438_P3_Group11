@@ -39,7 +39,6 @@ public class HealthCheckActivity extends AppCompatActivity {
     };
 
     public class HttpGetRequest extends AsyncTask<Void, Void, String> {
-
         static final String REQUEST_METHOD = "GET";
         static final int READ_TIMEOUT = 15000;
         static final int CONNECTION_TIMEOUT = 15000;
