@@ -21,6 +21,9 @@ public class Utils {
             return false;
         }
         String[] tokens = result.split(" ");
+        if(tokens.length < 2) {
+            return false;
+        }
         if(tokens[0].equals(username) && tokens[1].equals(password)) {
             return true;
         } else {
