@@ -44,7 +44,6 @@ public class AddUserPlantActivity extends AppCompatActivity {
         onClickMethods(factory);
     }
 
-    //TODO: need to add fertilizer editText and add it to plant data
     private void onClickMethods(IntentFactory factory) {
         addButton.setOnClickListener(v -> {
             String plantName = mName.getText().toString();

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = mPassword.getEditableText().toString();
 
         if(validate(username, password)) {
-            Intent intent = new Intent(getApplicationContext(), Home.class);
+            Intent intent = factory.getIntent(getApplicationContext(), Home.class);
             intent.putExtra(Utils.USERNAME_KEY, username);
             startActivity(intent);
         } else {
