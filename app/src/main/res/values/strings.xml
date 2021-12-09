@@ -30,4 +30,7 @@
     <string name="fertilize_start">Fertilize Start</string>
     <string name="fertilize_cycle">Fertilize Cycle</string>
     <string name="add_user_plant">Add User Plant</string>
+    <string name="watering_cycle_view">Watering Cycle: </string>
+    <string name="value">Value</string>
+    <string name="fertilizing_cycle_view">Fertilizing Cycle: </string>
 </resources>

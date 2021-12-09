@@ -6,15 +6,15 @@ public class UserPlant {
     private String mDescription;
     private String mNotes;
     private String mWateringCycle;
-    private String mFertilizeStart;
+    private String mFertilizeCycle;
 
-    public UserPlant(int mUserId, String mPlantName, String mDescription, String mNotes, String mWateringCycle, String mFertilizeStart) {
+    public UserPlant(int mUserId, String mPlantName, String mDescription, String mNotes, String mWateringCycle, String mFertilizeCycle) {
         this.mUserId = mUserId;
         this.mPlantName = mPlantName;
         this.mDescription = mDescription;
         this.mNotes = mNotes;
         this.mWateringCycle = mWateringCycle;
-        this.mFertilizeStart = mFertilizeStart;
+        this.mFertilizeCycle = mFertilizeCycle;
     }
 
     public int getmUserId() {
@@ -57,11 +57,11 @@ public class UserPlant {
         this.mWateringCycle = mWateringCycle;
     }
 
-    public String getmFertilizeStart() {
-        return mFertilizeStart;
+    public String getmFertilizeCycle() {
+        return mFertilizeCycle;
     }
 
-    public void setmFertilizeStart(String mFertilizeStart) {
-        this.mFertilizeStart = mFertilizeStart;
+    public void setmFertilizeCycle(String mFertilizeCycle) {
+        this.mFertilizeCycle = mFertilizeCycle;
     }
 }

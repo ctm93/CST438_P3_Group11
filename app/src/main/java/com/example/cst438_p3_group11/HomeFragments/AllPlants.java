@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cst438_p3_group11.Adapters.PlantListAdapter;
+import com.example.cst438_p3_group11.Adapters.PublicPlantAdapter;
+import com.example.cst438_p3_group11.Plants.PublicPlant;
 import com.example.cst438_p3_group11.R;
-import com.example.cst438_p3_group11.TempPlantClass;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class AllPlants extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private EditText mSearch;
-    ArrayList<TempPlantClass> mPlants; //TODO: Change Plant Class
+    ArrayList<PublicPlant> mPlants; //TODO: Change Plant Class
 
     @Nullable
     @Override
@@ -41,16 +41,16 @@ public class AllPlants extends Fragment {
         mRecyclerView = view.findViewById(R.id.plants_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
-        mAdapter = new PlantListAdapter(mPlants);
+        mAdapter = new PublicPlantAdapter(mPlants);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    private ArrayList<TempPlantClass> getPlantList() {
-        ArrayList<TempPlantClass> plants = new ArrayList<>();
+    private ArrayList<PublicPlant> getPlantList() {
+        ArrayList<PublicPlant> plants = new ArrayList<>();
         for(int i=0; i<10; i++) {
-            plants.add(new TempPlantClass(R.drawable.image_not_found, "Plant " + i, getString(R.string.plant_description)));
+            plants.add(new PublicPlant(i, i, "user", "Plant"+i, "Description"));
         }
         return plants;
     }
