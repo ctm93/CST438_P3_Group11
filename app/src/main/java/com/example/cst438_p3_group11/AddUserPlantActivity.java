@@ -1,5 +1,6 @@
 package com.example.cst438_p3_group11;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ public class AddUserPlantActivity extends AppCompatActivity {
     private EditText mWateringCycle;
     private EditText mFertilizeCycle;
     private Button addButton;
-    private String username;
+    private String mUsername;
 
     private static final String SERVER = "http://10.0.2.2:3000/";
 
@@ -39,7 +40,7 @@ public class AddUserPlantActivity extends AppCompatActivity {
 
         // Intent Factory for buttons.
         IntentFactory factory = new IntentFactory();
-
+        mUsername = getIntent().getStringExtra(Utils.USERNAME_KEY);
         connectElements();
         onClickMethods(factory);
     }
@@ -53,17 +54,24 @@ public class AddUserPlantActivity extends AppCompatActivity {
             String waterCycle = mWateringCycle.getText().toString();
             String fertilizeCycle = mFertilizeCycle.getText().toString();
 
+            Toast.makeText(getApplicationContext(), plantName+" "+description+" "+mUsername+" "+notes+" "+fertilizeCycle+" "+waterCycle, Toast.LENGTH_SHORT).show();
+//            http://localhost:3000/addMyPlants?plantName=testPlantB&description=sdescription&username=testuser1&notes=snotes&fertilizeCycle=every2months&waterCycle=everyweek
             String url = SERVER
-                    + "user_plants?plantName=" + plantName
-                    + "&waterCycle=" + waterCycle
+                    + "/addMyPlants"
+                    + "?plantName=" + plantName
                     + "&description=" + description
-//                    + "&username=" + username
+                    + "&username=" + mUsername
                     + "&notes=" + notes
                     + "&fertilizeCycle=" + fertilizeCycle
                     + "&waterCycle=" + waterCycle;
             HttpRequest request = new HttpRequest(url, "POST");
             request.execute();
 
+            Toast.makeText(getApplicationContext(), "Plant Added", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.putExtra(Utils.USERNAME_KEY, mUsername);
+            startActivity(intent);
         });
     }
 
