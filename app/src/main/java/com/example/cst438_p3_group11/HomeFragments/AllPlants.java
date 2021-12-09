@@ -1,6 +1,8 @@
 package com.example.cst438_p3_group11.HomeFragments;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,20 +23,50 @@ import java.util.ArrayList;
 public class AllPlants extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private PublicPlantAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private EditText mSearch;
-    ArrayList<PublicPlant> mPlants; //TODO: Change Plant Class
+    ArrayList<PublicPlant> mPlants;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.plants_view, container, false);
         mSearch = v.findViewById(R.id.search_plant);
+        search();
         mPlants = getPlantList();
         createRecyclerView(v);
 
         return v;
+    }
+
+    private void search() {
+        mSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+    }
+
+    private void filter(String s) {
+        ArrayList<PublicPlant> plants = new ArrayList<>();
+        for(PublicPlant plant: mPlants) {
+            if(plant.getPlantName().toLowerCase().contains(s.toLowerCase())) {
+                plants.add(plant);
+            }
+        }
+        mAdapter.filterList(plants);
     }
 
     private void createRecyclerView(View view) {
@@ -54,4 +86,6 @@ public class AllPlants extends Fragment {
         }
         return plants;
     }
+
+
 }
