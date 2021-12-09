@@ -50,13 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public Boolean validate(String username, String password) {
-//        String result = Utils.login(username, password);
-//        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-
-        if(username != null && password != null) {
-            return true;
-        }
-        return false;
+        return Utils.login(username, password);
     }
 
 }
