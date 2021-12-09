@@ -10,11 +10,14 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mUsername;
     private EditText mPassword;
-    private Button mLogin;
+    private Button mLogin, mBack;
+    IntentFactory factory = new IntentFactory();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,27 +31,35 @@ public class LoginActivity extends AppCompatActivity {
         mUsername = findViewById(R.id.username);
         mPassword = findViewById(R.id.password);
         mLogin = findViewById(R.id.login_button);
+        mBack = findViewById(R.id.btnBackToHomeLogin);
 
         mLogin.setOnClickListener(v -> login());
+        mBack.setOnClickListener(v -> back());
     }
 
     private void login() {
         String username = mUsername.getEditableText().toString();
         String password = mPassword.getEditableText().toString();
 
-        //TODO Remove toast
-        Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();
         if(validate(username, password)) {
             Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.putExtra(Utils.USERNAME_KEY, username);
             startActivity(intent);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Login Failed",
+                    Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
+    private void back() {
+        startActivity(factory.getIntent(this, MainActivity.class));
+    }
+
     public Boolean validate(String username, String password) {
-        if(username != null && password != null) {
-            return true;
-        }
-        return false;
+        return Utils.login(username, password);
     }
 
 }

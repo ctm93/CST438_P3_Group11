@@ -21,12 +21,13 @@ public class AddUserPlantActivity extends AppCompatActivity {
 
 
     // Layout parts
-    private TextView title;
+    private EditText mName;
+    private EditText mDescription;
+    private EditText mNotes;
+    private EditText mWateringCycle;
+    private EditText mFertilizeCycle;
     private Button addButton;
-    private EditText nameBox;
-    private EditText cycleBox;
-    private EditText descriptionBox;
-    private EditText fertilizerBox;
+    private String username;
 
     private static final String SERVER = "http://10.0.2.2:3000/";
 
@@ -34,7 +35,7 @@ public class AddUserPlantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_user_plant);
 
         // Intent Factory for buttons.
         IntentFactory factory = new IntentFactory();
@@ -46,11 +47,20 @@ public class AddUserPlantActivity extends AppCompatActivity {
     //TODO: need to add fertilizer editText and add it to plant data
     private void onClickMethods(IntentFactory factory) {
         addButton.setOnClickListener(v -> {
-            String plantName = nameBox.getText().toString();
-            String waterCycle = cycleBox.getText().toString();
-            String description = descriptionBox.getText().toString();
+            String plantName = mName.getText().toString();
+            String description = mDescription.getText().toString();
+            String notes = mNotes.getText().toString();
+            String waterCycle = mWateringCycle.getText().toString();
+            String fertilizeCycle = mFertilizeCycle.getText().toString();
 
-            String url = SERVER + "user_plants?plantName=" + plantName + "&waterCycle=" + waterCycle + "&description=" + description;
+            String url = SERVER
+                    + "user_plants?plantName=" + plantName
+                    + "&waterCycle=" + waterCycle
+                    + "&description=" + description
+//                    + "&username=" + username
+                    + "&notes=" + notes
+                    + "&fertilizeCycle=" + fertilizeCycle
+                    + "&waterCycle=" + waterCycle;
             HttpRequest request = new HttpRequest(url, "POST");
             request.execute();
 
@@ -58,10 +68,11 @@ public class AddUserPlantActivity extends AppCompatActivity {
     }
 
     private void connectElements() {
-        //title = findViewById(R.id.textViewAddPlantTitle);
-        addButton = findViewById(R.id.buttonAddUserPlant);
-        nameBox = findViewById(R.id.editTextUserPlantName);
-        cycleBox = findViewById(R.id.editTextUserPlantCycle);
-        descriptionBox = findViewById(R.id.editTextUserPlantDescription);
+        mName = findViewById(R.id.plant_name);
+        mDescription = findViewById(R.id.plant_description);
+        mNotes = findViewById(R.id.notes);
+        mWateringCycle = findViewById(R.id.watering_cycle);
+        mFertilizeCycle = findViewById(R.id.fertilize_cycle);
+        addButton = findViewById(R.id.buttonAddPlant);
     }
 }
