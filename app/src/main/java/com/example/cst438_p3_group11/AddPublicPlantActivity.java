@@ -3,6 +3,7 @@ package com.example.cst438_p3_group11;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +22,7 @@ import java.util.Map;
 public class AddPublicPlantActivity extends AppCompatActivity {
 
     // Layout parts
-    private TextView title;
+    private ImageView title;
     private Button addButton;
     private EditText nameBox;
     private EditText descriptionBox;
@@ -31,7 +32,7 @@ public class AddPublicPlantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_public_plant);
 
         // Intent Factory for buttons.
         IntentFactory factory = new IntentFactory();
@@ -44,8 +45,12 @@ public class AddPublicPlantActivity extends AppCompatActivity {
         addButton.setOnClickListener(v -> {
             String plantName = nameBox.getText().toString();
             String description = descriptionBox.getText().toString();
+            String username = getIntent().getStringExtra(Utils.USERNAME_KEY);
 
-            String url = SERVER + "public_plants?plantName=" + plantName + "&description=" + description;
+            String url = SERVER
+                    + "public_plants?plantName=" + plantName
+                    + "&description=" + description
+                    + "&username=" + username;
             HttpRequest request = new HttpRequest(url, "POST");
             request.execute();
 
