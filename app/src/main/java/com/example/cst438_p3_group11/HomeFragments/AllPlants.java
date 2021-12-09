@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cst438_p3_group11.Adapters.PublicPlantAdapter;
 import com.example.cst438_p3_group11.Plants.PublicPlant;
 import com.example.cst438_p3_group11.R;
+import com.example.cst438_p3_group11.Utils;
 
 import java.util.ArrayList;
 
@@ -80,11 +81,7 @@ public class AllPlants extends Fragment {
     }
 
     private ArrayList<PublicPlant> getPlantList() {
-        ArrayList<PublicPlant> plants = new ArrayList<>();
-        for(int i=0; i<10; i++) {
-            plants.add(new PublicPlant(i, i, "user", "Plant"+i, "Description"));
-        }
-        return plants;
+        return Utils.getPublicPlants();
     }
 
 

@@ -45,8 +45,12 @@ public class AddPublicPlantActivity extends AppCompatActivity {
         addButton.setOnClickListener(v -> {
             String plantName = nameBox.getText().toString();
             String description = descriptionBox.getText().toString();
+            String username = getIntent().getStringExtra(Utils.USERNAME_KEY);
 
-            String url = SERVER + "public_plants?plantName=" + plantName + "&description=" + description;
+            String url = SERVER
+                    + "public_plants?plantName=" + plantName
+                    + "&description=" + description
+                    + "&username=" + username;
             HttpRequest request = new HttpRequest(url, "POST");
             request.execute();
 

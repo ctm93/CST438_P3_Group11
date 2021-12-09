@@ -43,7 +43,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if(validate(username, password)) {
             Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(factory.getIntent(this, Home.class));
+            intent.putExtra(Utils.USERNAME_KEY, username);
+            startActivity(intent);
         } else {
             Toast.makeText(
                     getApplicationContext(),

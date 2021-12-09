@@ -3,14 +3,12 @@ package com.example.cst438_p3_group11.Plants;
 public class PublicPlant {
 
     private int mPlantId;
-    private int mUserId;
     private String mUsername;
     private String mPlantName;
     private String mDescription;
 
-    public PublicPlant(int mPlantId, int mUserId, String mUsername, String mPlantName, String mDescription) {
+    public PublicPlant(int mPlantId, String mUsername, String mPlantName, String mDescription) {
         this.mPlantId = mPlantId;
-        this.mUserId = mUserId;
         this.mUsername = mUsername;
         this.mPlantName = mPlantName;
         this.mDescription = mDescription;
@@ -22,14 +20,6 @@ public class PublicPlant {
 
     public void setPlantId(int mPlantId) {
         this.mPlantId = mPlantId;
-    }
-
-    public int getUserId() {
-        return mUserId;
-    }
-
-    public void setUserId(int mUserId) {
-        this.mUserId = mUserId;
     }
 
     public String getUsername() {

@@ -1,10 +1,13 @@
 package com.example.cst438_p3_group11.HomeFragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,11 +17,13 @@ import com.example.cst438_p3_group11.AddPublicPlantActivity;
 import com.example.cst438_p3_group11.AddUserPlantActivity;
 import com.example.cst438_p3_group11.IntentFactory;
 import com.example.cst438_p3_group11.R;
+import com.example.cst438_p3_group11.Utils;
 
 public class AddPlant extends Fragment {
 
     private Button mUser;
     private Button mPublic;
+    private String username;
 
     @Nullable
     @Override
@@ -33,7 +38,18 @@ public class AddPlant extends Fragment {
     }
 
     private void onClickMethods() {
-        mUser.setOnClickListener(v-> startActivity(IntentFactory.getIntent(getActivity(), AddUserPlantActivity.class)));
-        mPublic.setOnClickListener(v->startActivity(IntentFactory.getIntent(getActivity(), AddPublicPlantActivity.class)));
+        mUser.setOnClickListener(v-> {
+            Intent intent = IntentFactory.getIntent(getActivity(), AddUserPlantActivity.class);
+            String username = getActivity().getIntent().getStringExtra(Utils.USERNAME_KEY);
+            intent.putExtra(Utils.USERNAME_KEY, username);
+            startActivity(intent);
+        });
+        mPublic.setOnClickListener(v->{
+            Intent intent = IntentFactory.getIntent(getActivity(), AddPublicPlantActivity.class);
+            String username = getActivity().getIntent().getStringExtra(Utils.USERNAME_KEY);
+            intent.putExtra(Utils.USERNAME_KEY, username);
+            startActivity(intent);
+        });
     }
+
 }
