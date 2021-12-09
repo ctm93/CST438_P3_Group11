@@ -33,6 +33,45 @@ public class Utils {
         return tokens[0].equals(username) && tokens[1].equals(password);
     }
 
+    public static String signUp(String username, String password) {
+
+        if(username.length() <= 0 && password.length() <= 0) {
+            return "Enter valid username and password";
+        }
+
+        String url = SERVER + "/login?username=" + username;
+        HttpRequest request = new HttpRequest(url, "GET");
+
+        String result;
+        try {
+            result = request.execute().get();
+        } catch(Exception e) {
+            return "Error connecting to the server";
+        }
+
+        if(result.length() > 0) {
+            return "Username already in use";
+        }
+
+        if(username.split(" ").length > 1) {
+            return "Invalid Username";
+        }
+        if(password.split(" ").length > 1) {
+            return "Invalid Password";
+        }
+
+        url = SERVER + "/addNewUser?username=" + username + "&password=" + password;
+        request = new HttpRequest(url, "GET");
+
+        try {
+            result = request.execute().get();
+        } catch (Exception e) {
+            return "Error connecting to the server";
+        }
+
+        return result;
+    }
+
     public static ArrayList<PublicPlant> getPublicPlants() {
         ArrayList<PublicPlant> plants = new ArrayList<>();
 

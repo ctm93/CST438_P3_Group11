@@ -32,7 +32,6 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     EditText username1, password1;
     Button btnRegister, btnBacktoHome;
 
@@ -43,7 +42,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        db = FirebaseFirestore.getInstance();
         username1 = findViewById(R.id.etUsername);
         password1 = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegister);
@@ -53,32 +51,16 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String username2 = username1.getText().toString();
-                String password2 = password1.getText().toString();
-                if(validate(username2, password2)) {
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("username3", username2);
-                    user.put("password3", password2);
-
-                    db.collection("User")
-                            .add(user)
-                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(SignUpActivity.this, "Successfully signed up!", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                            Toast.makeText(SignUpActivity.this, "Failed to sign up. Please try again.", Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
+                String username = username1.getText().toString();
+                String password = password1.getText().toString();
+                String result = Utils.signUp(username, password);
+                if(result.equals("New user added")) {
+                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
                 } else {
-                    Toast.makeText(SignUpActivity.this, "Please enter all necessary information.", Toast.LENGTH_LONG).show();
+                   Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
