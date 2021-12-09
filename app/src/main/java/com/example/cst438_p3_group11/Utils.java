@@ -63,13 +63,14 @@ public class Utils {
         url = SERVER + "/addNewUser?username=" + username + "&password=" + password;
         request = new HttpRequest(url, "GET");
 
+        String finalResult;
         try {
-            result = request.execute().get();
+            finalResult = request.execute().get();
         } catch (Exception e) {
             return "Error connecting to the server";
         }
 
-        return result;
+        return finalResult;
     }
 
     public static ArrayList<PublicPlant> getPublicPlants() {

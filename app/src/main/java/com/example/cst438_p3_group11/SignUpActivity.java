@@ -54,8 +54,8 @@ public class SignUpActivity extends AppCompatActivity {
                 String username = username1.getText().toString();
                 String password = password1.getText().toString();
                 String result = Utils.signUp(username, password);
-                if(result.equals("New user added")) {
-                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                if(result.equals("New user added") || result.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                 } else {
