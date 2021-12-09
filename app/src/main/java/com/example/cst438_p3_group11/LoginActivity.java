@@ -39,8 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         String username = mUsername.getEditableText().toString();
         String password = mPassword.getEditableText().toString();
 
-        //TODO Remove toast
-        Toast.makeText(getApplicationContext(), username + " " + password, Toast.LENGTH_SHORT).show();
         if(validate(username, password)) {
             Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(factory.getIntent(this, Home.class));
@@ -52,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public Boolean validate(String username, String password) {
+//        String result = Utils.login(username, password);
+//        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+
         if(username != null && password != null) {
             return true;
         }

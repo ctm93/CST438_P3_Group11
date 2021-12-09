@@ -41,7 +41,6 @@ public class PlantListAdapter extends RecyclerView.Adapter<PlantListAdapter.Plan
         mPlantList = plants;
     }
 
-
     @NonNull
     @Override
     public PlantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
