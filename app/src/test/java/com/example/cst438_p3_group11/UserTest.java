@@ -36,6 +36,6 @@ public class UserTest {
         user1.setPassword("pass1");
         assertEquals("pass1", user1.getPassword());
         user1.setPassword("pass2");
-        assertNotEquals("pass2", user1.getPassword());
+        assertEquals("pass2", user1.getPassword());
     }
 }
