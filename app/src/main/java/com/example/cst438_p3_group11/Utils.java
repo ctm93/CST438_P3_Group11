@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Utils {
     public static String USERNAME_KEY = "com.example.cst438_p3_group11.USERNAME_KEY";
-    private static String SERVER = "http://192.168.1.38:3000";
+    public static String SERVER = "http://192.168.1.38:3000";
 
     public static Boolean login(String username, String password) {
 

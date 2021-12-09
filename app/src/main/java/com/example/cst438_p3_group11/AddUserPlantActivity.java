@@ -30,7 +30,7 @@ public class AddUserPlantActivity extends AppCompatActivity {
     private Button addButton;
     private String mUsername;
 
-    private static final String SERVER = "http://10.0.2.2:3000/";
+    private static final String SERVER = Utils.SERVER;
 
 
     @Override
@@ -54,8 +54,6 @@ public class AddUserPlantActivity extends AppCompatActivity {
             String waterCycle = mWateringCycle.getText().toString();
             String fertilizeCycle = mFertilizeCycle.getText().toString();
 
-            Toast.makeText(getApplicationContext(), plantName+" "+description+" "+mUsername+" "+notes+" "+fertilizeCycle+" "+waterCycle, Toast.LENGTH_SHORT).show();
-//            http://localhost:3000/addMyPlants?plantName=testPlantB&description=sdescription&username=testuser1&notes=snotes&fertilizeCycle=every2months&waterCycle=everyweek
             String url = SERVER
                     + "/addMyPlants"
                     + "?plantName=" + plantName
@@ -64,7 +62,7 @@ public class AddUserPlantActivity extends AppCompatActivity {
                     + "&notes=" + notes
                     + "&fertilizeCycle=" + fertilizeCycle
                     + "&waterCycle=" + waterCycle;
-            HttpRequest request = new HttpRequest(url, "POST");
+            HttpRequest request = new HttpRequest(url, "GET");
             request.execute();
 
             Toast.makeText(getApplicationContext(), "Plant Added", Toast.LENGTH_SHORT).show();
