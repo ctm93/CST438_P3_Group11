@@ -1,28 +1,20 @@
 package com.example.cst438_p3_group11.Plants;
 
 public class UserPlant {
-    private int mUserId;
+
     private String mPlantName;
     private String mDescription;
     private String mNotes;
     private String mWateringCycle;
     private String mFertilizeCycle;
 
-    public UserPlant(int mUserId, String mPlantName, String mDescription, String mNotes, String mWateringCycle, String mFertilizeCycle) {
-        this.mUserId = mUserId;
+    public UserPlant(String mPlantName, String mDescription, String mNotes, String mWateringCycle, String mFertilizeCycle) {
+
         this.mPlantName = mPlantName;
         this.mDescription = mDescription;
         this.mNotes = mNotes;
         this.mWateringCycle = mWateringCycle;
         this.mFertilizeCycle = mFertilizeCycle;
-    }
-
-    public int getmUserId() {
-        return mUserId;
-    }
-
-    public void setmUserId(int mUserId) {
-        this.mUserId = mUserId;
     }
 
     public String getmPlantName() {

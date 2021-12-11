@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Utils {
     public static String USERNAME_KEY = "com.example.cst438_p3_group11.USERNAME_KEY";
-    private static String SERVER = "http://192.168.1.38:3000";
+    public static String SERVER = "http://192.168.1.38:3000";
 
     public static Boolean login(String username, String password) {
 
@@ -33,7 +33,49 @@ public class Utils {
         return tokens[0].equals(username) && tokens[1].equals(password);
     }
 
+    public static String signUp(String username, String password) {
+
+        if(username.length() <= 0 && password.length() <= 0) {
+            return "Enter valid username and password";
+        }
+
+        String url = SERVER + "/login?username=" + username;
+        HttpRequest request = new HttpRequest(url, "GET");
+
+        String result;
+        try {
+            result = request.execute().get();
+        } catch(Exception e) {
+            return "Error connecting to the server";
+        }
+
+        if(result.length() > 0) {
+            return "Username already in use";
+        }
+
+        if(username.split(" ").length > 1) {
+            return "Invalid Username";
+        }
+        if(password.split(" ").length > 1) {
+            return "Invalid Password";
+        }
+
+        url = SERVER + "/addNewUser?username=" + username + "&password=" + password;
+        request = new HttpRequest(url, "GET");
+
+        String finalResult;
+        try {
+            finalResult = request.execute().get();
+        } catch (Exception e) {
+            return "Error connecting to the server";
+        }
+
+        return finalResult;
+    }
+
     public static ArrayList<PublicPlant> getPublicPlants() {
+        ArrayList<PublicPlant> plants = new ArrayList<>();
+
         String url = SERVER + "/getPlants";
         HttpRequest request = new HttpRequest(url, "GET");
         String result;
@@ -43,7 +85,6 @@ public class Utils {
             return null;
         }
         String[] tokens = result.split("/");
-        ArrayList<PublicPlant> plants = new ArrayList<>();
         for(String t: tokens) {
             String[] plantInfo = t.split(";");
             String name = plantInfo[0];
@@ -55,6 +96,33 @@ public class Utils {
         return plants;
     }
 
+    public static ArrayList<UserPlant> getUserPlants(String username) {
+        ArrayList<UserPlant> plants = new ArrayList<>();
+
+        String url = SERVER + "/getMyPlants";
+        HttpRequest request = new HttpRequest(url, "GET");
+        String result;
+        try {
+            result = request.execute().get();
+        } catch (Exception e) {
+            return null;
+        }
+
+        String[] tokens = result.split("/");
+        for(String t: tokens) {
+            String [] plantInfo = t.split(";");
+            String name = plantInfo[0];
+            if(!username.equals(plantInfo[1])) {
+                continue;
+            }
+            String description = plantInfo[2];
+            String notes = plantInfo[3];
+            String waterCycle = plantInfo[4];
+            String fertilizeCycle = plantInfo[5];
+            plants.add(new UserPlant(name, description, notes, waterCycle, fertilizeCycle));
+        }
+        return plants;
+    }
 
 
 }

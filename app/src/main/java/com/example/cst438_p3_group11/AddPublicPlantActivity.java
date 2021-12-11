@@ -1,5 +1,6 @@
 package com.example.cst438_p3_group11;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ public class AddPublicPlantActivity extends AppCompatActivity {
     private EditText nameBox;
     private EditText descriptionBox;
 
-    private static final String SERVER = "http://10.0.2.2:3000/";
+    private static final String SERVER = Utils.SERVER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +49,19 @@ public class AddPublicPlantActivity extends AppCompatActivity {
             String username = getIntent().getStringExtra(Utils.USERNAME_KEY);
 
             String url = SERVER
-                    + "public_plants?plantName=" + plantName
+                    + "/addPlants?plantName=" + plantName
                     + "&description=" + description
-                    + "&username=" + username;
-            HttpRequest request = new HttpRequest(url, "POST");
+                    + "&username=" + username
+                    + "&plantID=" + 1;
+
+            Toast.makeText(getApplicationContext(), plantName + " " + description + " " + username, Toast.LENGTH_SHORT).show();
+            HttpRequest request = new HttpRequest(url, "GET");
             request.execute();
 
+            Toast.makeText(getApplicationContext(), "Public Plant Added", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            startActivity(intent);
         });
     }
 
