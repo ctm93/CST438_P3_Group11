@@ -29,6 +29,15 @@ public class AddPublicPlantActivity extends AppCompatActivity {
 
     private static final String SERVER = "http://10.0.2.2:3000/";
 
+    // Function to ensure all information was input.
+    public Boolean validate(String name, String description) {
+        if(name != null && description != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +54,18 @@ public class AddPublicPlantActivity extends AppCompatActivity {
         addButton.setOnClickListener(v -> {
             String plantName = nameBox.getText().toString();
             String description = descriptionBox.getText().toString();
-            String username = getIntent().getStringExtra(Utils.USERNAME_KEY);
+            if(validate(plantName, description)) {
+                String username = getIntent().getStringExtra(Utils.USERNAME_KEY);
 
-            String url = SERVER
-                    + "public_plants?plantName=" + plantName
-                    + "&description=" + description
-                    + "&username=" + username;
-            HttpRequest request = new HttpRequest(url, "POST");
-            request.execute();
+                String url = SERVER
+                        + "public_plants?plantName=" + plantName
+                        + "&description=" + description
+                        + "&username=" + username;
+                HttpRequest request = new HttpRequest(url, "POST");
+                request.execute();
+            } else {
+                Toast.makeText(AddPublicPlantActivity.this, "Please enter all necessary information.", Toast.LENGTH_LONG).show();
+            }
 
         });
     }

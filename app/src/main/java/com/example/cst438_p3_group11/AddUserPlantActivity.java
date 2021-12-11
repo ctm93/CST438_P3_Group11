@@ -31,6 +31,15 @@ public class AddUserPlantActivity extends AppCompatActivity {
 
     private static final String SERVER = "http://10.0.2.2:3000/";
 
+    // Function to ensure all information was input.
+    public Boolean validate(String name, String description, String notes, String watering, String fertilize) {
+        if(name != null && description != null && notes != null && watering != null && fertilize != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +61,20 @@ public class AddUserPlantActivity extends AppCompatActivity {
             String waterCycle = mWateringCycle.getText().toString();
             String fertilizeCycle = mFertilizeCycle.getText().toString();
 
-            String url = SERVER
-                    + "user_plants?plantName=" + plantName
-                    + "&waterCycle=" + waterCycle
-                    + "&description=" + description
+            if(validate(plantName, description, notes, waterCycle, fertilizeCycle)) {
+                String url = SERVER
+                        + "user_plants?plantName=" + plantName
+                        + "&waterCycle=" + waterCycle
+                        + "&description=" + description
 //                    + "&username=" + username
-                    + "&notes=" + notes
-                    + "&fertilizeCycle=" + fertilizeCycle
-                    + "&waterCycle=" + waterCycle;
-            HttpRequest request = new HttpRequest(url, "POST");
-            request.execute();
+                        + "&notes=" + notes
+                        + "&fertilizeCycle=" + fertilizeCycle
+                        + "&waterCycle=" + waterCycle;
+                HttpRequest request = new HttpRequest(url, "POST");
+                request.execute();
+            } else {
+                Toast.makeText(AddUserPlantActivity.this, "Please enter all necessary information.", Toast.LENGTH_LONG).show();
+            }
 
         });
     }
