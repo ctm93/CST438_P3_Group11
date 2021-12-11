@@ -30,6 +30,15 @@ public class AddPublicPlantActivity extends AppCompatActivity {
 
     private static final String SERVER = Utils.SERVER;
 
+    // Function to ensure all information was input.
+    public Boolean validate(String name, String description) {
+        if(name != null && description != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,22 +55,22 @@ public class AddPublicPlantActivity extends AppCompatActivity {
         addButton.setOnClickListener(v -> {
             String plantName = nameBox.getText().toString();
             String description = descriptionBox.getText().toString();
-            String username = getIntent().getStringExtra(Utils.USERNAME_KEY);
+            if(validate(plantName, description)) {
+                String username = getIntent().getStringExtra(Utils.USERNAME_KEY);
+                String url = SERVER
+                        + "public_plants?plantName=" + plantName
+                        + "&description=" + description
+                        + "&username=" + username;
+                HttpRequest request = new HttpRequest(url, "POST");
+                request.execute();
+                Toast.makeText(getApplicationContext(), "Public Plant Added", Toast.LENGTH_SHORT).show();
+                Intent intent = factory.getIntent(getApplicationContext(), Home.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(AddPublicPlantActivity.this, "Please enter all necessary information.", Toast.LENGTH_LONG).show();
+            }
 
-            String url = SERVER
-                    + "/addPlants?plantName=" + plantName
-                    + "&description=" + description
-                    + "&username=" + username
-                    + "&plantID=" + 1;
-
-            Toast.makeText(getApplicationContext(), plantName + " " + description + " " + username, Toast.LENGTH_SHORT).show();
-            HttpRequest request = new HttpRequest(url, "GET");
-            request.execute();
-
-            Toast.makeText(getApplicationContext(), "Public Plant Added", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
+            
         });
     }
 

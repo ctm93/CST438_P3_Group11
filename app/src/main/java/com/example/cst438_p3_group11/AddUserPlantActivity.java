@@ -32,6 +32,15 @@ public class AddUserPlantActivity extends AppCompatActivity {
 
     private static final String SERVER = Utils.SERVER;
 
+    // Function to ensure all information was input.
+    public Boolean validate(String name, String description, String notes, String watering, String fertilize) {
+        if(name != null && description != null && notes != null && watering != null && fertilize != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +62,25 @@ public class AddUserPlantActivity extends AppCompatActivity {
             String waterCycle = mWateringCycle.getText().toString();
             String fertilizeCycle = mFertilizeCycle.getText().toString();
 
-            String url = SERVER
-                    + "/addMyPlants"
-                    + "?plantName=" + plantName
-                    + "&description=" + description
-                    + "&username=" + mUsername
-                    + "&notes=" + notes
-                    + "&fertilizeCycle=" + fertilizeCycle
-                    + "&waterCycle=" + waterCycle;
-            HttpRequest request = new HttpRequest(url, "GET");
-            request.execute();
+            if(validate(plantName, description, notes, waterCycle, fertilizeCycle)) {
+                String url = SERVER
+                        + "user_plants?plantName=" + plantName
+                        + "&waterCycle=" + waterCycle
+                        + "&description=" + description
+                        + "&notes=" + notes
+                        + "&fertilizeCycle=" + fertilizeCycle
+                        + "&waterCycle=" + waterCycle;
+                HttpRequest request = new HttpRequest(url, "POST");
+                request.execute();
+                Toast.makeText(getApplicationContext(), "Plant Added", Toast.LENGTH_SHORT).show();
+                Intent intent = factory.getIntent(getApplicationContext(), Home.class);
+                intent.putExtra(Utils.USERNAME_KEY, mUsername);
+                startActivity(intent);
+            } else {
+                Toast.makeText(AddUserPlantActivity.this, "Please enter all necessary information.", Toast.LENGTH_LONG).show();
+            }
 
-            Toast.makeText(getApplicationContext(), "Plant Added", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            intent.putExtra(Utils.USERNAME_KEY, mUsername);
-            startActivity(intent);
+            
         });
     }
 
