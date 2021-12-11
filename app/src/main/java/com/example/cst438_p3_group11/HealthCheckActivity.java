@@ -50,7 +50,7 @@ public class HealthCheckActivity extends AppCompatActivity {
 
             try {
                 // connect to the server
-                URL myUrl = new URL(SERVER.concat("login?username=testuser1"));
+                URL myUrl = new URL(SERVER);
                 HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
                 connection.setRequestMethod(REQUEST_METHOD);
                 connection.setReadTimeout(READ_TIMEOUT);

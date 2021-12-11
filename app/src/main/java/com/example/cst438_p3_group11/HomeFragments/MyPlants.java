@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.example.cst438_p3_group11.Adapters.UserPlantAdapter;
 import com.example.cst438_p3_group11.Plants.UserPlant;
 import com.example.cst438_p3_group11.R;
 import com.example.cst438_p3_group11.User;
+import com.example.cst438_p3_group11.Utils;
 
 import java.util.ArrayList;
 
@@ -81,10 +83,7 @@ public class MyPlants extends Fragment {
     }
 
     private ArrayList<UserPlant> getPlantList() {
-        ArrayList<UserPlant> plants = new ArrayList<>();
-        for(int i=0; i<4; i++) {
-            plants.add(new UserPlant(1, "Plant"+i, "Plant Description", "Notes", "two times", "once week"));
-        }
-        return plants;
+        String username = getActivity().getIntent().getStringExtra(Utils.USERNAME_KEY);
+        return Utils.getUserPlants(username);
     }
 }
